@@ -13,4 +13,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "PDP-Mobile"
-include ':app'
+
+// Modules
+include ':app' // Basically "app" is a presentation layer for just simplicity
+include ':data'
+include ':domain'

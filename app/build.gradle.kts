@@ -76,6 +76,10 @@ dependencies {
     implementation(Jetbrains.coroutinesCore)
     implementation(Jetbrains.coroutinesAndroid)
 
+    // Modules
+    implementation(project(Modules.data))
+    implementation(project(Modules.domain))
+
     // Tests
     testImplementation(Test.jUnit)
     androidTestImplementation(Test.jUnitExt)
