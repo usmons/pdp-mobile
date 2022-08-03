@@ -6,6 +6,7 @@ import io.usmon.data.repository.course.mapper.toEntity
 import io.usmon.domain.repository.course.Course
 import io.usmon.domain.repository.course.CourseRepository
 import io.usmon.domain.util.Resource
+import io.usmon.domain.util.SimpleResource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.io.IOException
@@ -16,7 +17,7 @@ class CourseRepositoryImpl(
     private val courseDao: CourseDao,
 ) : CourseRepository {
 
-    override suspend fun insertCourse(course: Course): Resource<Unit> {
+    override suspend fun insertCourse(course: Course): SimpleResource {
         return try {
             courseDao.insert(course.toEntity())
             Resource.success(Unit)

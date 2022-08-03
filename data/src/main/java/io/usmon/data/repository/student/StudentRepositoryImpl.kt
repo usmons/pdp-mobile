@@ -6,6 +6,7 @@ import io.usmon.data.repository.student.mapper.toStudent
 import io.usmon.domain.repository.student.Student
 import io.usmon.domain.repository.student.StudentRepository
 import io.usmon.domain.util.Resource
+import io.usmon.domain.util.SimpleResource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.io.IOException
@@ -16,7 +17,7 @@ class StudentRepositoryImpl(
     private val studentDao: StudentDao,
 ) : StudentRepository {
 
-    override suspend fun insertStudent(student: Student): Resource<Unit> {
+    override suspend fun insertStudent(student: Student): SimpleResource {
         return try {
             studentDao.insert(student.toEntity())
             Resource.success(Unit)
@@ -30,7 +31,7 @@ class StudentRepositoryImpl(
         return studentDao.getStudentById(studentId)?.toStudent()
     }
 
-    override suspend fun deleteStudent(student: Student): Resource<Unit> {
+    override suspend fun deleteStudent(student: Student): SimpleResource {
         return try {
             studentDao.delete(student.toEntity())
             Resource.success(Unit)

@@ -8,6 +8,7 @@ import io.usmon.domain.repository.group.Group
 import io.usmon.domain.repository.group.GroupRepository
 import io.usmon.domain.repository.group.GroupedStudents
 import io.usmon.domain.util.Resource
+import io.usmon.domain.util.SimpleResource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.io.IOException
@@ -17,7 +18,7 @@ import java.io.IOException
 class GroupRepositoryImpl(
     private val groupDao: GroupDao,
 ) : GroupRepository {
-    override suspend fun insertGroup(group: Group): Resource<Unit> {
+    override suspend fun insertGroup(group: Group): SimpleResource {
         return try {
             groupDao.insert(group.toEntity())
             Resource.success(Unit)
@@ -27,7 +28,7 @@ class GroupRepositoryImpl(
         }
     }
 
-    override suspend fun deleteGroup(group: Group): Resource<Unit> {
+    override suspend fun deleteGroup(group: Group): SimpleResource {
         return try {
             groupDao.delete(group.toEntity())
             Resource.success(Unit)

@@ -6,6 +6,7 @@ import io.usmon.data.repository.mentor.mapper.toMentor
 import io.usmon.domain.repository.mentor.Mentor
 import io.usmon.domain.repository.mentor.MentorRepository
 import io.usmon.domain.util.Resource
+import io.usmon.domain.util.SimpleResource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.io.IOException
@@ -16,7 +17,7 @@ class MentorRepositoryImpl(
     private val mentorDao: MentorDao,
 ) : MentorRepository {
 
-    override suspend fun insertMentor(mentor: Mentor): Resource<Unit> {
+    override suspend fun insertMentor(mentor: Mentor): SimpleResource {
         return try {
             mentorDao.insert(mentor.toEntity())
             Resource.success(Unit)
@@ -26,7 +27,7 @@ class MentorRepositoryImpl(
         }
     }
 
-    override suspend fun deleteMentor(mentor: Mentor): Resource<Unit> {
+    override suspend fun deleteMentor(mentor: Mentor): SimpleResource {
         return try {
             mentorDao.delete(mentor.toEntity())
             Resource.success(Unit)

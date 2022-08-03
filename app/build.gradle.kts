@@ -68,7 +68,6 @@ dependencies {
 
     // Dagger Hilt for dependency injection
     implementation(DaggerHilt.hiltAndroid)
-    implementation(DaggerHilt.hiltViewModel)
     kapt(DaggerHilt.hiltAndroidCompiler)
     kapt(DaggerHilt.hiltCompiler)
 
@@ -82,6 +81,7 @@ dependencies {
 
     // Tests
     testImplementation(Test.jUnit)
+    testImplementation(Test.truth)
     androidTestImplementation(Test.jUnitExt)
     androidTestImplementation(Test.espresso)
 

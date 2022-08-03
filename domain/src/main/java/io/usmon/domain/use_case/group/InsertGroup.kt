@@ -3,13 +3,14 @@ package io.usmon.domain.use_case.group
 import io.usmon.domain.repository.group.Group
 import io.usmon.domain.repository.group.GroupRepository
 import io.usmon.domain.util.Resource
+import io.usmon.domain.util.SimpleResource
 
 // Created by Usmon Abdurakhmanv on 7/31/2022.
 
 class InsertGroup(
     private val repository: GroupRepository,
 ) {
-    suspend operator fun invoke(group: Group): Resource<Unit> {
+    suspend operator fun invoke(group: Group): SimpleResource {
         if (group.name.isBlank()) {
             return Resource.failure("Group name couldn't be empty")
         }

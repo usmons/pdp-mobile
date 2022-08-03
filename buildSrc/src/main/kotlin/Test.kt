@@ -10,4 +10,7 @@ object Test {
 
     private const val espressoVersion = "3.4.0"
     const val espresso = "androidx.test.espresso:espresso-core:$espressoVersion"
+
+    private const val truthVersion = "1.4.0"
+    const val truth = "androidx.test.ext:truth:$truthVersion"
 }
